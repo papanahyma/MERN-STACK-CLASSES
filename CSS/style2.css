@@ -1,0 +1,20 @@
+label {
+    color: rgb(249, 37, 5);
+    font-weight: bold;
+    font-size: 25px;
+
+}
+
+label::after{
+    content:'*';
+}
+label:first-of-type::before{
+    content:"🙎"
+}
+label:last-of-type::before{
+    content:"🔐"
+}
+button{
+    background-color: rgb(212, 238, 10);
+    padding: 10px 30px;
+}
