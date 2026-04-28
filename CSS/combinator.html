@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ol+h1{
+            color: palevioletred;
+            background-color: lightblue;
+        }
+
+        /* descendant selector */
+          h4>p{
+            color: blue;
+            background-color: pink;
+        }
+
+        /* child selector: used to select the direct child of an element*/
+        ol>li{
+            color: green;
+            background-color: lightpink;
+            margin: 10px;
+        }
+
+        /*descendant selector: used to select the direct child or indirect child of an element*/
+        ul p{
+            color: red;
+            background-color: lightgreen;
+        }
+
+       /*general sibling selector: used to select all the siblings of an element*/
+       ol~h1{
+        color: orange;
+        background-color: lightyellow;
+       } 
+    </style>
+</head>
+<body>
+    <h1>Ordered list</h1>
+    <ol>
+        <li>list </li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+    </ol>
+
+    <h1>Unordered list</h1>
+    <ul>
+        <li>
+             <p>
+                This is an unordered list
+             </p>
+        </li>
+        <li>unordered list</li>
+        <li>unordered list</li>
+        <li>unordered list</li>
+        <li>unordered list</li>
+    </ul>
+    <h1>Heading in 3rd position</h1>
+    <h3>
+        <h4>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti non est totam amet, culpa dicta repellendus odio enim, eaque dignissimos veritatis praesentium quasi autem. Nesciunt voluptate atque minima culpa facilis!
+            </p>
+        </h4>
+    </h3>
+</body>
+</html>

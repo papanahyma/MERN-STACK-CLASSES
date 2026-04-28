@@ -26,12 +26,174 @@ CSS selectors:
     ->CSS selectors are present only in internal and external CSS
     types:
         1.simple selectors:
-            >ID selectors(#)
-            >Class selector(.)
-            >Tag selector
-            >Grouping selectors(,)
-            >Universal selectors(*)
-        2.combinator selectors
-        3.pseudo class selectors
-        4.pseudo elements selectors
-        5.attribute selectors
+            ->ID selectors(#)
+            ->Class selector(.)
+            ->Tag selector
+            ->Grouping selectors(,)
+            ->Universal selectors(*)
+
+        2.combinator selectors:
+            ->descendent selector(space)
+            ->child selector (>)
+            ->adjacnet selector(+)
+            ->general sibiling selector(~)
+
+        3.pseudo elements selectors:
+            >> ::after
+            >> ::before
+            >> ::first-letter
+            >> ::first-line
+            >> ::maker
+            >> ::selector
+            >> ::placeholder
+
+
+            key::=li{list-itme-$}*4
+            it will display 4set of lists
+
+
+        4.Attribute selectors: 
+        >> Attributes selectors are used to target HTML elements based on Attributes
+        ex:<h1 align="center" id="headind"> hello </h1>
+        <h1 id="heading">HEllo </h1>
+
+        syntax: selector[Attributename="value"]{
+        .........styling....
+        }
+
+        types:
+        1.[AttributeName="value"]:
+        2.[AttributeName^="value"]: exact value will be target  the first match letter or first word
+        3.[AttributeName$="value"]: tag , -tag same matching it will display the coloue 
+        4.[AttributeName|="value"]:used to target the starting point
+        5.[AttributeName*="value"]: it will select all if it match any letter it will match(universal)
+            
+
+        >> Color Values:
+        1.colouename
+        2.rgb:255(red,green,blue) 
+        3.rgba(red,green,blue,alpha)
+        4.hsl(hue,saturation,lightness)
+        5.hsl(hue-0-360deg,saturation-1-100%,lightness-1-100%,alpha:0-10)
+        6,hexa code: to pass the 6 decimal code or +2 if they add then it is alpha
+        7.transparent:it will not disply the value untill we select it
+        8.color():
+
+        >>>> formula :ol>(li>h4{headings})*6
+        install this to pick the color:Color Picker HEX 
+
+
+
+        Text properties:
+        --> text properties are used to apply styling for only 'text'
+        properties Like:
+        ----------------
+        1.Text-alignment:
+            i.text-align: left,right,center,start,end,justify
+            ii.word-spacing
+            iii.letter-spacing
+            iv.text-indent
+            v.line-height
+        2.text decoration properties:
+                i.text-decoration-line
+                ii.text-decoration-color
+                iii.text-decoration-style
+                iv.text-decoration-thickness
+                v.text-decoration (short hand form)     
+
+
+        >>>.main container it will open one div tag with class
+
+
+        3.text transform properties:
+        a.text-transform: lowercase, uppercase, captilalized
+
+        4.text-overflow properties:
+        a.overflow : visible,auto,hidden,scroll
+        b.overflow-x
+        c.overflow-y
+
+        5.font properties
+        a.font-size
+        b.font-weight
+        c.font-style
+        d.font-family
+
+
+        >>CSS Box Model:
+        ---------------
+        1.Padding:space between content and border
+        padding properties:
+            i.padding-top
+            ii:padding-bottom
+            iii:padding-left 
+            iv:padding-right
+            v:padding(short hand form)
+
+        2.border: the space between padding and margin
+        border properties:
+        ----------------
+        1.border-stylr
+        2.border-width
+        3.border-color
+        4.border-(short hand form)
+        5.border-top
+        6.border-left
+        7.border-right
+        8.border-bottom
+
+        border radius properties
+        -----------------------
+        1.border-top-left-radius
+        2.border-top-right-radius
+        3.border-bottom-left-radius
+        4.border-bottom-right-radius
+        5.border-radius-(short hand form)
+
+
+        flex properties:
+1.display:flex;
+2.flex-direction
+3.flx-warp
+4.justify-content
+5.aligin-items
+6.flex-grow
+7.flex-shrink
+8.flex
+
+
+grid properties:
+-------------------------
+1.display:grid
+2.grid-template-columns
+3.grid-template-rows
+4.row-gap
+5.column-gap
+6.grid-row-start
+7.grid-row-end
+8.grid-column-start
+9.grid-column-end
+
+
+position properties:
+-----------------------------------------
+position:relative, absolute, fixed,stricky
+left
+right
+top
+bottom
+
+animinations:
+    1.define animination using @keyframes
+    2.link
+
+media queries:
+----------------------------------
+media queries are used to build reponsive web page based on device width(device view port)
+   -> break points
+   1.smaller devices (mobile with brands) 0px-450px
+   2.media devices (tables/ipad) 450px - 850px
+   3.large devices (laptops ) 850px-1200px
+   4.X-large devices(digital screen) >1200px
+
+@media screen min-width & max-width
