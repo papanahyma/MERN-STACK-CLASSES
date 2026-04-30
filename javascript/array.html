@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //array literal
+        let arr=[10,20,30,40,50,60];
+        let arr2=["java",null,50,20.5,true];
+       /* console.table(arr);
+        console.log(arr2);
+        console.log(arr.length);
+        console.log(arr[0]);
+        console.log(arr[1]);
+        console.log(arr[2]);*/
+       /* console.log(arr[3]);
+        console.log(arr[4]); 
+        console.log(arr[5]);*/
+
+        //array constructor
+        let arr1=new Array(10,20,30,40);
+        console.table(arr1);
+        console.log(arr[6]);
+
+        let sampleArr=[10,20,30];
+        sampleArr.push(20);
+        console.log(sampleArr);
+        sampleArr.pop();
+        console.log(sampleArr);
+        sampleArr.unshift(40,50);
+        console.log(sampleArr);
+        sampleArr.shift();
+        sampleArr.shift();
+        sampleArr.shift();
+        console.log(sampleArr);
+        sampleArr.splice();
+        console.log(sampleArr);
+
+        sampleArr.push(10,40,50);
+        console.log(sampleArr);
+        sampleArr.splice(1,0,"javascript");
+        console.log(sampleArr);
+
+        console.log(sampleArr.splice(2,1));
+        console.log(sampleArr.slice(0,2));
+
+
+        let str="javascript is a scripting language";
+        console.log(str.split(" "));
+        console.log(str.split("").reverse().toString().replaceAll(",",""));
+        console.log(str.split(" ").reverse().toString().replaceAll(","," "));
+
+
+
+
+
+    </script>    
+</body>
+</html>
