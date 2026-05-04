@@ -31,12 +31,31 @@
       font-size: 18px;
       margin: 5px 0;
     }
+
+    button{
+      background: grey;
+    }
   </style>
 </head>
 <body>
     <div class="box">
     <h1>Login Successful!</h1>
     <p id="welcome">Welcome</p>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+function logout() {
+    // clear stored data
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+
+    // show alert
+    alert("Logged out successfully");
+
+    // redirect to login page
+    window.location.href = "loginpage.html";
+    }
+    </script>
   </div>
 </body>
 </html>
