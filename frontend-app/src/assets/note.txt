@@ -39,8 +39,85 @@ Components:
 
     types:
     ------
-    1.Class based component: 
+    1.Class based component(CBC): 
+    ----------------------------
         ->components are declared using class keyword
         ->In CBC constructors ,super keywords,this keywords is present also render(),and life cycle method are present
-        ->In CBC states are present
-    2.Function based component: 
+        ->In CBC states are present so, it is called STATEFULL COMPONENTS
+         Syntax:
+            import {Component} from 'react';
+            class Classname extends Components{
+                render(){
+                return(
+                    html code
+                    )
+                }
+            }
+
+            export default Component;
+
+    2.Function based component(FBC):
+    --------------------------------
+        ->we can FBC using arrow functions or normal functions or functional expression
+        ->in FBC constructors,  keyword, this keyword not present
+        ->in fbc states are not present which is why it is called STATELESS COMPONENTS
+        Sntax
+            1.const ComponentName=()=>{-------------> using arrow function
+                return(
+                    html code here....
+                )
+            }
+            export default ComponentName;
+
+            2.function ComponentName(){
+                return(
+                    html code here------------------->normal function
+                )
+
+            }
+            export default ComponentName;
+
+
+
+            3.const ComponentName=function(){
+                return(
+                    html code here-------------------->Functional 
+                )
+                
+            }
+            export default ComponentName;
+
+
+
+Hooks:
+------
+-> they are used to make fbc to make statefull
+->they are used in only FBC
+->Are introduced in 16.8 react version
+Ex:
+    1.useState()
+    2.useEffect()
+    3.useNavigate()
+    4.useContext()
+    5.useMuce()
+    6.useRef().......etc
+
+
+States in React:
+----------------
+->states are used to hold the data
+->states are mutable in nature
+->states are present only in class based component(CBC)
+
+States in Function based Component:
+----------------------------------
+    ->we can declare states in FBC using useStare hook
+
+PROPS (properties):
+------
+->props are used to transfer data from one component to another component
+->props are immutable in nature
+->props are present both in CBC and FBC
+
+
+        
