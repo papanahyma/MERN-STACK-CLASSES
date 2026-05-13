@@ -1,65 +1,211 @@
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import React,{ useState } from 'react';
-import { alignPropType } from 'react-bootstrap/esm/types';
-function Register() {
+import React, { useState } from "react";
+
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+
+import { Link, useNavigate } from "react-router-dom";
+
+import { toast } from "react-toastify";
+
+const Register = () => {
+
+  const navigate = useNavigate();
 
   const [details, setDetails] = useState({
-  name: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-  phone: '',
-  address: '',
-});
+    name: "",
+    phone: "",
+    email: "",
+    password: "",
+  });
+
+  const [showPsw, setShowPsw] = useState(false);
+
+  // Handle Input Change
+  const handleChange = (e) => {
+    setDetails({
+      ...details,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Handle Submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(details);
+
+    // Validation
+    if (
+      details.name !== "" &&
+      details.phone !== "" &&
+      details.email !== "" &&
+      details.password !== ""
+    ) {
+
+      if (
+        !details.email.includes("@") ||
+        !details.email.includes(".")
+      ) {
+
+        toast.warning("Invalid Email ❌");
+
+      } else {
+
+        toast.success("Registered Successfully 😊");
+
+        setDetails({
+          name: "",
+          phone: "",
+          email: "",
+          password: "",
+        });
+
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      }
+    }
+  };
+
+  // Reset Form
+  const handleReset = () => {
+    setDetails({
+      name: "",
+      phone: "",
+      email: "",
+      password: "",
+    });
+  };
+
+  // Show/Hide Password
+  const handlePassword = () => {
+    setShowPsw(!showPsw);
+  };
 
   return (
-   <>
-    <h1>Registration Form</h1>
-    <div id="form-container">
-    <Form>
-      <Row className="mb-3">
-       
-       <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridName">
-          <Form.Label>Name:</Form.Label>
-          <Form.Control type="text" placeholder="Enter full name" required />
-        </Form.Group>
+    <div className="main-container">
 
-        <Form.Group as={Col} controlId="formGridPhone">
-          <Form.Label>Phone No:</Form.Label>
-          <Form.Control type="tel" pattern="[6-9][0-9]{9}" required placeholder="Enter phone number" />
-        </Form.Group>
-      </Row>
+      <div className="form-box">
 
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control type="email" required placeholder="Enter email" />
-        </Form.Group>
+        <h1 className="text-center mb-4">
+          Registration Form
+        </h1>
 
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label> Create Password:</Form.Label>
-          <Form.Control type="password" required placeholder="Password" />
-        </Form.Group>
-      </Row>
+        <Form onSubmit={handleSubmit}>
 
-       <Form.Group className="mb-3">
-        <Form.Label> Check me out </Form.Label>
-          <br />
-        <span>If You  Already Have Register Click here to {" "} <a href="/login">Login</a>
-        </span>
-      </Form.Group>
+          {/* Name + Phone */}
+          <Row className="mb-3">
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+            <Form.Group as={Col}>
+              <Form.Label>Name</Form.Label>
+
+              <Form.Control
+                type="text"
+                name="name"
+                placeholder="Enter Full Name"
+                required
+                value={details.name}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group as={Col}>
+              <Form.Label>Phone</Form.Label>
+
+              <Form.Control
+                type="tel"
+                name="phone"
+                placeholder="Enter Phone Number"
+                pattern="[6-9][0-9]{9}"
+                required
+                value={details.phone}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+          </Row>
+
+          {/* Email + Password */}
+          <Row className="mb-3">
+
+            <Form.Group as={Col}>
+              <Form.Label>Email</Form.Label>
+
+              <Form.Control
+                type="email"
+                name="email"
+                placeholder="Enter Email"
+                required
+                value={details.email}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group as={Col}>
+              <Form.Label>Password</Form.Label>
+
+              <div className="d-flex">
+
+                <Form.Control
+                  type={showPsw ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter Password"
+                  required
+                  value={details.password}
+                  onChange={handleChange}
+                />
+
+                <span
+                  onClick={handlePassword}
+                  style={{
+                    cursor: "pointer",
+                    marginLeft: "10px",
+                    fontSize: "22px",
+                    marginTop: "5px",
+                  }}
+                >
+                  {showPsw ? "🙈" : "👁️"}
+                </span>
+
+              </div>
+            </Form.Group>
+
+          </Row>
+
+          {/* Login Link */}
+          <div className="login-link">
+            Already Registered?{" "}
+            <Link to="/login">Login</Link>
+          </div>
+
+          {/* Buttons */}
+          <div className="d-flex gap-3">
+
+            <Button
+              variant="primary"
+              type="submit"
+              className="w-100"
+            >
+              Register
+            </Button>
+
+            <Button
+              variant="warning"
+              type="reset"
+              className="w-100"
+              onClick={handleReset}
+            >
+              Cancel
+            </Button>
+
+          </div>
+
+        </Form>
+      </div>
     </div>
-   </>
   );
-}
-
+};
 
 export default Register;
