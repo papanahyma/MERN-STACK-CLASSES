@@ -1,5 +1,5 @@
 import React from 'react'
-import text from './../../../node_modules/dom-helpers/esm/text';
+import text from 'dom-helpers/esm/text';
 
 const CarouselImage = (props) => {
   return (

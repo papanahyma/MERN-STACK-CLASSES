@@ -1,36 +1,47 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
-import Dashboard from "./pages/Dashboard"
-import Products from "./pages/Products"
-import Home from "./pages/Home"
-import NavBar from "./assets/components/NavBar"
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Dashboard from "./pages/Dashboard";
+import NavBar from "./Components/NavBar";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/style.css";
-import LandingPages from "./pages/LandingPages";
-import CarouselContainer from "./assets/Components/CarouselContainer"
-import CarouselImage from "./assets/Components/CarouselImage"
-import DummyProducts from "./assets/Components/DummyProducts"
+import LandingPage from "./Pages/LandingPages"
+import { createContext, useState } from "react";
+import CartPage from "./pages/CartPage";
+import CartProvider from "./Services/CardProvider";
 
-const App=()=>{
+// eslint-disable-next-line react-refresh/only-export-components
+export const CartContext = createContext();
 
-  return(
-    
+const App = () => {
+  const [items, setItems] = useState([]);
+
+  const addToCart = (product) => {
+    const cartProduct = items.some((item) => item.id == product.id);
+    if(!cartProduct){
+      setItems([...items,product]);
+      console.log(items);
+      
+    }  
+  };
+
+  return (
     <BrowserRouter>
-    <NavBar/>
-      <Routes>
-        <Route path="/" element={<LandingPages/>}/>
-        <Route path="login" element={<Login/>}/>
-        <Route path="register" element={<Register/>}/>
-        <Route path="dashboard" element={<Dashboard/>}/>
-        <Route path="products" element={<Products/>}/>
-        <Route path="home" element ={<Home/>}/>
-      </Routes>
+      <CartContext.Provider value={{ items, addToCart }}>
+        <NavBar />
+        <Routes>
+          <Route path="" element={<LandingPage />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="home" element={<Home />} />
+          <Route path="products" element={<Products />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="cart" element={<CartPage/>}/>
+        </Routes>
+      </CartContext.Provider>
     </BrowserRouter>
-  )
-}
-
-export default App
-
-
-;
+  );
+};
+export default App;
