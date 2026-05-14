@@ -49,12 +49,12 @@ MongoDB:
   -> in doc the data is stored in the JSON format 
 
 Database:
-  ------------------------------------------------------------
+  -------------------------------------------------------------
  |  syntax: use databaseName        (to create or switich )    |
  ---------------------------------------------------------------
 Collection:
 ----------
-  ->it is the group of documents in MomgoDB
+  ->it is the group of documents in MongoDB
   ->it is not a fixed schema 
   -> it is dynamic
       syntax to create a collection:
@@ -76,10 +76,10 @@ Document:
        2.syntax:
 
            --------------------------------------------
-          | db.collectionName.insertMany({doc1,doc2})  |
+          | db.collectionName.insertMany({doc1},{doc2})  |
           ----------------------------------------------
 
-->the primary key is automativally created by object id 
+->the primary key is automatically created by object id 
 
 MONGODB Atlas:directly we can store in cloud(500md free)
 Mongobd compass: it is present in local system , it is a ui tool
@@ -175,7 +175,8 @@ Logical operators:
 ---------------------
     1,$and
     2.$or
-    3.$not
+    3.$nor
+    4.$not
 
 
 
@@ -190,6 +191,42 @@ syntax:   db.collectionName.find().skip(number)
 syntax:   db.collectionName.find().limit(number)
 syntax:   db.collectionName.find().sort({field:value})
 
-Aggregate functions:
+Aggregate functions(Aggregate Pipelines):
 ----------------------
   ->these are used to group and then sum
+  ->Aggregate functions are used to perform operations on stage by stage
+     syntax:
+          ---------------------------------------------------
+          |  db.collectionName.aggregate({filter condition})  |
+          ---------------------------------------------------
+      ---------------------------------------------------------
+       db.collectionName.aggregate([
+        {stage 1},{stage 2}
+       ])
+      ------------------------------------------------------
+Aggregate operators:
+----------------------
+  1.$match: used to match the data in collection
+  2.$group :  to find the no.of fields depending on the field given
+
+
+q. to find hidhest salary in each dept
+      db.Employee_Details.aggregate({
+  $group:{
+_id:"$department",
+    maxSalaryInEachDept:{$max:"$salary"}
+  }
+})
+    
+  3.$min  :should use in group
+  4.$max  :used in group
+  5,$avg   :used in group
+  6.$sum : to count
+  7.$lookup : to perform joints in Mongobd
+  8.$unwind  : used to create or use data in separate collection
+  9.$project: 
+  10.$sort:
+  11.$limit:
+  12.$out:
+  13.$
+  14:$
